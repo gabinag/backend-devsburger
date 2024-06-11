@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "vercel-build": "npx prisma migrate deploy"
+    "build": "tsc", 
+    "start": "node dist/index.js", 
+    "vercel-build": "npm run build"
   },
   "keywords": [],
   "author": "",
