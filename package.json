@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
-    "vercel-build": "npx prisma generate && npx prisma migrate deploy"
+    "dev": "tsx watch src/server.ts",
+    "build": "prisma generate && tsc",
+    "start": "node dist/server.js",
+    "vercel-build": "fastify build"
   },
   "keywords": [],
   "author": "",
