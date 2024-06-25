@@ -24,3 +24,12 @@ model Product {
 
   @@map("products")
 }
+
+model Order {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  phone           String
+  address         String
+  paymentMethod   String
+  createdAt       DateTime @default(now())
+}
