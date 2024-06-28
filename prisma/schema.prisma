@@ -43,7 +43,7 @@ model OrderItem {
   orderId     String    @db.ObjectId
   productId   String    @db.ObjectId
   quantity    Int
-  order       Order     @relation("order", fields: [orderId], references: [id])
+  order       Order     @relation("order", fields: [orderId], references: [id], onDelete: Cascade)
   product     Product   @relation("product", fields: [productId], references: [id])
 
   @@map("orderItem")
