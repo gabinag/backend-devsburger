@@ -4,6 +4,7 @@ import { ListProductsController } from "./controllers/ListProductsController";
 import { DeleteProductController } from "./controllers/DeleteProductController";
 import { UpdateProductController } from './controllers/UpdateProductController';
 import { CreateOrderController } from "./controllers/CreateOrderController";
+import { ListOrdersController } from "./controllers/ListOrdersController";
 
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
     fastify.get("/teste", async(request: FastifyRequest, reply: FastifyReply) => {
@@ -26,7 +27,11 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
         return new UpdateProductController().handle(request, reply);
     });
 
-    fastify.post("/orders", async (request: FastifyRequest, reply: FastifyReply) => {
+    fastify.post("/order", async (request: FastifyRequest, reply: FastifyReply) => {
         return new CreateOrderController().handle(request, reply);
+    });
+
+    fastify.get("/orders", async (request: FastifyRequest, reply: FastifyReply) => {
+        return new ListOrdersController().handle(request, reply);
     });
 }

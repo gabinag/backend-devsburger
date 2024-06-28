@@ -21,6 +21,7 @@ model Product {
   image       String
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())
+  orderItems  OrderItem[] @relation("product")
 
   @@map("products")
 }
@@ -31,5 +32,19 @@ model Order {
   phone           String
   address         String
   paymentMethod   String
-  createdAt       DateTime @default(now())
+  createdAt       DateTime    @default(now())
+  orderItems      OrderItem[] @relation("order")
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  orderId     String    @db.ObjectId
+  productId   String    @db.ObjectId
+  quantity    Int
+  order       Order     @relation("order", fields: [orderId], references: [id])
+  product     Product   @relation("product", fields: [productId], references: [id])
+
+  @@map("orderItem")
 }
