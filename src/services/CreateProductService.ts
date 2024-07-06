@@ -5,12 +5,13 @@ interface CreateProductProps {
     description: string;
     price: number;
     image: string;
+    category: string;
 }
 
 class CreateProductService {
-    async execute({ name, description, price, image }: CreateProductProps) {
+    async execute({ name, description, price, image, category  }: CreateProductProps) {
 
-        if(!name || !description || !price || !image ) {
+        if(!name || !description || !price || !image || !category ) {
             throw new Error("Preencha todos os campos")
         }
 
@@ -19,7 +20,8 @@ class CreateProductService {
                 name,
                 description,
                 price,
-                image
+                image,
+                category,
             }
         })
 
