@@ -19,12 +19,19 @@ model Product {
   description String
   price       Float
   image       String
-  category    String 
+  category    Category 
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())
   orderItems  OrderItem[] @relation("product")
 
   @@map("products")
+}
+
+enum Category {
+  HAMBURGUERES
+  COMBOS
+  ACOMPANHAMENTOS
+  BEBIDAS
 }
 
 model Order {

@@ -6,10 +6,11 @@ interface UpdateProductProps {
     price: number;
     description: string;
     image: string;
+    category: string; 
 }
 
 class UpdateProductService {
-    async execute({ id, name, price, description, image }: UpdateProductProps) {
+    async execute({ id, name, price, description, image, category }: UpdateProductProps) {
         if(!id) {
             throw new Error("Solicitação inválida.");
         }
@@ -32,7 +33,8 @@ class UpdateProductService {
                 name: name || findProduct.name,
                 price: price || findProduct.price,
                 description: description || findProduct.description,
-                image: image || findProduct.image
+                image: image || findProduct.image,
+                category: category || findProduct.category
             }
         });
 

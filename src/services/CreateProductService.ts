@@ -11,7 +11,7 @@ interface CreateProductProps {
 class CreateProductService {
     async execute({ name, description, price, image, category  }: CreateProductProps) {
 
-        if(!name || !description || !price || !image || !category ) {
+        if(!name || !description || !price || !image || !category) {
             throw new Error("Preencha todos os campos")
         }
 
