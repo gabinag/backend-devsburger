@@ -1,3 +1,4 @@
+import { Category } from "@prisma/client";
 import prismaClient from "../prisma";
 
 interface CreateProductProps {
@@ -5,7 +6,7 @@ interface CreateProductProps {
     description: string;
     price: number;
     image: string;
-    category: string;
+    category: Category;
 }
 
 class CreateProductService {
