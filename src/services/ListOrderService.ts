@@ -1,8 +1,11 @@
 import prismaClient from "../prisma";
 
 class ListOrdersService {
-    async execute(id: string) {
-        const orders = await prismaClient.order.findMany({
+    async execute(orderId: string) {
+        const order = await prismaClient.order.findUnique({
+            where: {
+                id: orderId
+            },
             include: {
                 orderItems: {
                     select: {
@@ -16,9 +19,8 @@ class ListOrdersService {
                 }
             }
         });
-        return orders;
+        return order;
     }
 }
 
 export { ListOrdersService };
-

@@ -38,6 +38,10 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
         return new ListOrdersController().handle(request, reply);
     });
 
+    fastify.get("/orders/:id", async (request: FastifyRequest, reply: FastifyReply) => {
+        return new ListOrdersController().handle(request, reply);
+    });
+
     fastify.delete("/order", async (request: FastifyRequest, reply: FastifyReply) => {
         return new DeleteOrderController().handle(request, reply)
     });
