@@ -1,6 +1,6 @@
 import prismaClient from "../prisma";
 
-class ListOrdersService {
+class ListOrderService {
     async execute(orderId: string) {
         const order = await prismaClient.order.findUnique({
             where: {
@@ -23,4 +23,4 @@ class ListOrdersService {
     }
 }
 
-export { ListOrdersService };
+export { ListOrderService };

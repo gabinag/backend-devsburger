@@ -8,6 +8,7 @@ import { ListOrdersController } from "./controllers/ListOrdersController";
 import { DeleteOrderController } from "./controllers/DeleteOrderController";
 import { UpdateOrderStatusController } from "./controllers/UpdateOrderStatusController";
 import { UpdateOrderStatusBody } from "./types";
+import { ListOrderController } from "./controllers/ListOrderController";
 
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
     fastify.get("/teste", async(request: FastifyRequest, reply: FastifyReply) => {
@@ -39,7 +40,7 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
     });
 
     fastify.get("/orders/:id", async (request: FastifyRequest, reply: FastifyReply) => {
-        return new ListOrdersController().handle(request, reply);
+        return new ListOrderController().handle(request, reply);
     });
 
     fastify.delete("/order", async (request: FastifyRequest, reply: FastifyReply) => {

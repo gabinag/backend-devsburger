@@ -1,12 +1,12 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { ListOrdersService } from "../services/ListOrdersService";
+import { ListOrderService } from "../services/ListOrderService";
 
-class ListOrdersController {
+class ListOrderController {
     async handle(request: FastifyRequest, reply: FastifyReply) {
         const { id } = request.params as { id: string };
 
         try {
-            const listOrdersService = new ListOrdersService();
+            const listOrdersService = new ListOrderService();
             const order = await listOrdersService.execute(id);
 
             if (!order) {
@@ -20,4 +20,4 @@ class ListOrdersController {
     }
 }
 
-export { ListOrdersController };
+export { ListOrderController };
