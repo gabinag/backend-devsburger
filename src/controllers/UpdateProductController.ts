@@ -1,5 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { UpdateProductService } from '../services/UpdateProductService';
+import { Category } from "@prisma/client";
 
 const validCategories = ["HAMBURGUERES", "COMBOS", "ACOMPANHAMENTOS", "BEBIDAS"];
 
@@ -7,7 +8,7 @@ class UpdateProductController {
     async handle(request: FastifyRequest, reply: FastifyReply) {
         
         const { id } = request.query as { id: string };
-        const { name, price, description, image, category } = request.body as { name: string; price: number; description: string, image: string, category: string };
+        const { name, price, description, image, category } = request.body as { name: string; price: number; description: string, image: string, category: Category };
 
         if (!id) {
             reply.status(400).send({ error: "ID do produto é obrigatório" });

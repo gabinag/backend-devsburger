@@ -1,3 +1,4 @@
+import { Category } from "@prisma/client";
 import prismaClient from "../prisma";
 
 interface UpdateProductProps {
@@ -6,7 +7,7 @@ interface UpdateProductProps {
     price: number;
     description: string;
     image: string;
-    category: string; 
+    category: Category; 
 }
 
 class UpdateProductService {
@@ -34,7 +35,7 @@ class UpdateProductService {
                 price: price || findProduct.price,
                 description: description || findProduct.description,
                 image: image || findProduct.image,
-                category: category || findProduct.category
+                category: category || findProduct.category as Category
             }
         });
 

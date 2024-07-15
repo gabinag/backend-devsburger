@@ -23,6 +23,7 @@ class CreateOrderService {
         phone,
         address,
         paymentMethod,
+        status: "pending",
         orderItems: {
           create: items.map(item => ({
             productId: item.productId,
