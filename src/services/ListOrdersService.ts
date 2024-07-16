@@ -1,7 +1,7 @@
 import prismaClient from "../prisma";
 
 class ListOrdersService {
-    async execute(id: string) {
+    async execute(id?: string) {
         const orders = await prismaClient.order.findMany({
             include: {
                 orderItems: {
