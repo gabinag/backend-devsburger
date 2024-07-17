@@ -3,8 +3,9 @@ import { ListOrdersService } from "../services/ListOrdersService";
 
 class ListOrdersController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
+    const { status } = request.params as { status: string };
     const listOrdersService = new ListOrdersService();
-    const orders = await listOrdersService.execute();
+    const orders = await listOrdersService.execute(status as string);
     reply.send(orders);
   }
 }
