@@ -47,7 +47,7 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
         return new DeleteOrderController().handle(request, reply)
     });
 
-    fastify.post("/order/status", (request: FastifyRequest<{ Body: UpdateOrderStatusBody }>, reply: FastifyReply) => {
+    fastify.put("/order/status", (request: FastifyRequest<{ Body: UpdateOrderStatusBody }>, reply: FastifyReply) => {
         return new UpdateOrderStatusController().handle(request, reply)
     });
 }
