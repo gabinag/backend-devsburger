@@ -5,6 +5,7 @@ interface CreateOrderProps {
   phone: string;
   address: string;
   paymentMethod: string;
+  status: string;
   items: Array<{
     productId: string;
     quantity: number;
@@ -12,7 +13,7 @@ interface CreateOrderProps {
 }
 
 class CreateOrderService {
-  async execute({ name, phone, address, paymentMethod, items }: CreateOrderProps) {
+  async execute({ name, phone, address, paymentMethod, items, status }: CreateOrderProps) {
     if (!name || !phone || !address || !paymentMethod || items.length === 0) {
       throw new Error("Preencha todos os campos e adicione pelo menos um item ao pedido");
     }
@@ -23,7 +24,7 @@ class CreateOrderService {
         phone,
         address,
         paymentMethod,
-        status: "pending",
+        status,
         orderItems: {
           create: items.map(item => ({
             productId: item.productId,
