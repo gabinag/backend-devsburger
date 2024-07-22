@@ -7,7 +7,7 @@ import { CreateOrderController } from "./controllers/CreateOrderController";
 import { ListOrdersController } from "./controllers/ListOrdersController";
 import { DeleteOrderController } from "./controllers/DeleteOrderController";
 import { UpdateOrderStatusController } from "./controllers/UpdateOrderStatusController";
-import { UpdateOrderStatusBody } from "./types";
+import { QueryParams, UpdateOrderStatusBody } from "./types";
 import { ListOrderController } from "./controllers/ListOrderController";
 
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
@@ -35,7 +35,7 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
         return new CreateOrderController().handle(request, reply);
     });
 
-    fastify.get("/orders", async (request: FastifyRequest, reply: FastifyReply) => {
+    fastify.get("/orders", async (request: FastifyRequest<{ Querystring: QueryParams }>, reply: FastifyReply) => {
         return new ListOrdersController().handle(request, reply);
     });
 
