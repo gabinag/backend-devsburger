@@ -11,6 +11,7 @@ class ListOrdersService {
                 address: true,
                 paymentMethod: true,
                 status: true,  
+                createdAt: true,
                 orderItems: {
                     select: {
                         quantity: true,
