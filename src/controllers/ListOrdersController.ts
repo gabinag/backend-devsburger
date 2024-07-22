@@ -1,9 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { ListOrdersService } from "../services/ListOrdersService";
-
-interface QueryParams {
-  status?: string;
-}
+import { QueryParams } from "../types";
 
 class ListOrdersController {
   async handle(request: FastifyRequest<{ Querystring: QueryParams }>, reply: FastifyReply) {
