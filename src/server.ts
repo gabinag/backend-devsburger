@@ -2,8 +2,11 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import socketio from 'fastify-socket.io';
 import { routes } from './routes';
+import { registerProductRoutes } from './routes/productRoutes';
 
 const app = Fastify({ logger: true });
+
+registerProductRoutes(app);
 
 app.setErrorHandler((error, request, reply) => {
     reply.code(400).send({ message: error.message });
