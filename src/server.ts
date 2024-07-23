@@ -1,12 +1,13 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import socketio from 'fastify-socket.io';
-import { routes } from './routes';
 import { registerProductRoutes } from './routes/productRoutes';
+import { registerOrderRoutes } from './routes/orderRoutes';
 
 const app = Fastify({ logger: true });
 
 registerProductRoutes(app);
+registerOrderRoutes(app);
 
 app.setErrorHandler((error, request, reply) => {
     reply.code(400).send({ message: error.message });
@@ -28,7 +29,6 @@ app.register(socketio, {
   }
 });
 
-app.register(routes);
 
 app.ready().then(() => {
   app.io.on('connection', (socket) => {
