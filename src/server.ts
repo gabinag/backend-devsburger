@@ -13,22 +13,20 @@ app.setErrorHandler((error, request, reply) => {
     reply.code(400).send({ message: error.message });
 });
 
-// Configuração do CORS
 app.register(cors, {
-  origin: ["http://127.0.0.1:5174", "http://127.0.0.1:5173"], 
+  origin: true, 
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 });
 
-// Configuração do Socket.io
+
 app.register(socketio, {
   cors: {
-    origin: ["http://127.0.0.1:5174", "http://127.0.0.1:5173"], 
+    origin: true, 
     methods: ["GET", "POST"]
   }
 });
-
 
 app.ready().then(() => {
   app.io.on('connection', (socket) => {
