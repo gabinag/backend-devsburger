@@ -43,6 +43,7 @@ model Order {
   status          String      @default("pending")
   createdAt       DateTime    @default(now())
   orderItems      OrderItem[] @relation("order")
+  observation     String?
 
   @@map("orders")
 }
