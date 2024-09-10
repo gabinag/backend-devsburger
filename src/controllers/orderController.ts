@@ -14,6 +14,7 @@ interface CreateOrderRequest {
   paymentMethod: string;
   status: string;
   observation?: string;
+  totalPrice: number;
   items: Array<{
     productId: string;
     quantity: number;
@@ -39,10 +40,10 @@ interface UpdateOrderStatusBody {
 
 export class OrderController {
   async createOrder(request: FastifyRequest, reply: FastifyReply) {
-    const { name, phone, address, paymentMethod, items, status, observation } = request.body as CreateOrderRequest;
+    const { name, phone, address, paymentMethod, items, status, observation, totalPrice } = request.body as CreateOrderRequest;
     
     const orderService = new CreateOrderService();
-    const order = await orderService.execute({ name, phone, address, paymentMethod, items, status, observation });
+    const order = await orderService.execute({ name, phone, address, paymentMethod, items, status, observation, totalPrice });
 
     reply.send(order);
   }

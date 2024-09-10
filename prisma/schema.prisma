@@ -44,6 +44,7 @@ model Order {
   createdAt       DateTime    @default(now())
   orderItems      OrderItem[] @relation("order")
   observation     String?
+  totalPrice  Float
 
   @@map("orders")
 }

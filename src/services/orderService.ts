@@ -11,6 +11,7 @@ interface CreateOrderProps {
     productId: string;
     quantity: number;
   }>;
+  totalPrice: number;
 }
 
 interface DeleteOrderProps {
@@ -18,8 +19,8 @@ interface DeleteOrderProps {
 }
 
 export class CreateOrderService {
-  async execute({ name, phone, address, paymentMethod, items, status, observation }: CreateOrderProps) {
-    if (!name || !phone || !address || !paymentMethod || items.length === 0) {
+  async execute({ name, phone, address, paymentMethod, items, status, observation, totalPrice }: CreateOrderProps) {
+    if (!name || !phone || !address || !paymentMethod || items.length === 0 || !totalPrice) {
       throw new Error("Preencha todos os campos e adicione pelo menos um item ao pedido");
     }
 
@@ -31,6 +32,7 @@ export class CreateOrderService {
         paymentMethod,
         status,
         observation,
+        totalPrice,
         orderItems: {
           create: items.map(item => ({
             productId: item.productId,
@@ -79,6 +81,7 @@ export class ListOrdersService {
         status: true,
         createdAt: true,
         observation: true,
+        totalPrice: true,
         orderItems: {
           select: {
             quantity: true,
