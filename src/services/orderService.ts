@@ -11,7 +11,7 @@ interface CreateOrderProps {
     productId: string;
     quantity: number;
   }>;
-  totalPrice?: number | null;
+  totalPrice: number;
 }
 
 interface DeleteOrderProps {
