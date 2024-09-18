@@ -1,10 +1,13 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import socketio from 'fastify-socket.io';
+import multipart from '@fastify/multipart'; 
 import { registerProductRoutes } from './routes/productRoutes';
 import { registerOrderRoutes } from './routes/orderRoutes';
 
 const app = Fastify({ logger: true });
+
+app.register(multipart);
 
 registerProductRoutes(app);
 registerOrderRoutes(app);
