@@ -1,30 +1,13 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { CreateProductService, DeleteProductService, UpdateProductService, ListProductsService } from "../services/productService";
 import { Category } from "@prisma/client";
-import fs from 'fs';
-import path from 'path';
 
 export class ProductController {
     async createProduct(request: FastifyRequest, reply: FastifyReply) {
-        const data = await request.file(); 
-        const { name, description, price, category } = request.body as { name: string, description: string, price: number, category: Category };
-
-        if (!data) {
-            return reply.status(400).send({ message: "Arquivo não encontrado no upload" });
-        }
-
-        const uploadPath = path.join(__dirname, '..', 'uploads', data.filename);
-        const imagePath = `/uploads/${data.filename}`;
-
-        await new Promise((resolve, reject) => {
-            const fileStream = fs.createWriteStream(uploadPath);
-            data.file.pipe(fileStream);
-            fileStream.on('finish', resolve);
-            fileStream.on('error', reject);
-        });
+        const { name, description, price, image, category } = request.body as { name: string, description: string, price: number, image: string, category: Category };
         
         const productService = new CreateProductService();
-        const product = await productService.execute({ name, description, price, image: imagePath, category });
+        const product = await productService.execute({ name, description, price, image, category });
 
         reply.send(product);
     }
