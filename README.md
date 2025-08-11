@@ -1,4 +1,4 @@
-Este é o back-end do sistema de pedidos **DevsBurger**, projeto desenvolvido em React para o Trabalho de Conclusão de Curso apresentado à Faculdade de Tecnologia Rubens Lara, a fim de obter o Título de Tecnólogo em Sistemas para Internet.   
+Este é o back-end do sistema de pedidos **Devs Burger**, projeto desenvolvido em React para o Trabalho de Conclusão de Curso apresentado à Faculdade de Tecnologia Rubens Lara, a fim de obter o Título de Tecnólogo em Sistemas para Internet.   
 
 ### Tecnologias utilizadas ###
 - Node.js - Ambiente de execução JavaScript no lado do servidor, ideal para aplicações escaláveis;
